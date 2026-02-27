@@ -112,3 +112,7 @@ Whether you are a business owner, product manager, operations leader, or data an
 ✔ Who is buying
 ✔ When customers are most active
 ✔ How customers feel
+
+📁 Dashboard Files
+* 📄 [Restaurant Performance Dashboard](https://drive.google.com/file/d/1fdD6YC1bhsnIDD2vgvcy4zcDmab2FxsB/view?usp=drive_link)
+* 📄 [Customer Reviews Dashboard](https://drive.google.com/file/d/1JzuOMYitK_VKYbPo62Wk8TVGHsRDTOxV/view?usp=drive_link)
