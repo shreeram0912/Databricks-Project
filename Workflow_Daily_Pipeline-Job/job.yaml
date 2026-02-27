@@ -1,0 +1,23 @@
+resources:
+  jobs:
+    workflow_daily_pipeline:
+      name: workflow_daily_pipeline
+      tasks:
+        - task_key: pipeline_ingestion_eventhub
+          pipeline_task:
+            pipeline_id: bf57acc3-ffb6-45ad-8fdd-d4ee660fcb8f
+            full_refresh: false
+        - task_key: pipeline_transformation_silver
+          depends_on:
+            - task_key: pipeline_ingestion_eventhub
+          pipeline_task:
+            pipeline_id: c4621ba2-25c0-43ea-bfd8-51753f160344
+            full_refresh: false
+        - task_key: pipeline_transformation_gold
+          depends_on:
+            - task_key: pipeline_transformation_silver
+          pipeline_task:
+            pipeline_id: f1bda58f-9232-45d7-b07a-8c81e4ce9674
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

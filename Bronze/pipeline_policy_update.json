@@ -1,0 +1,20 @@
+databricks pipelines update d0757d53-3dfa-468b-8736-26673a393d82 --json '{
+    "name": "gw_ingestion,
+    "catalog": "ws_dbxproject_catalog",
+    "schema": "00_landing",
+    "gateway_definition": {
+        "connection_name": "connection_sqldatabase",
+        "gateway_storage_catalog": "ws_testproj",
+        "gateway_storage_schema": "00_landing",
+        "gateway_storage_name": "gw_ingestion"
+    },
+    "clusters": [
+        {
+            "label": "default",
+            "policy_id": "00017F27D487BB99",
+            "apply_policy_default_values": true
+        }
+    ],
+    "continuous": true
+}'
+
