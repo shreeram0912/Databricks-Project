@@ -29,28 +29,28 @@ All data is organized into Bronze, Silver, and Gold layers.
 
 ## 🥉 Bronze Layer – Data Ingestion
     Two data sources were used:
-**1. Batch Processing – Azure SQL Database**
-Connected using Databricks Lakeflow Connect, Data loaded into Unity Catalog -> Catalog
-* workspace_databricksproject_catalog,
-* Schema: 01_bronze
-* Tables: Tables: customer_reviews, customers, historical_orders, menu_items, restaurants.csv
+* **1. Batch Processing – Azure SQL Database**
+ Connected using Databricks Lakeflow Connect, Data loaded into Unity Catalog -> Catalog
+ * workspace_databricksproject_catalog,
+ * Schema: 01_bronze
+ * Tables: Tables: customer_reviews, customers, historical_orders, menu_items, restaurants.csv
 
-**2. Stream Processing – Azure Event Hub**
-Connected using Databricks Lakeflow Declarative Pipeline, Real-time order data streamed into -> Catalog
-* workspace_databricksproject_catalog,
-* Schema: 01_bronze
-* Tables: Tables: orders.csv
-* Then: Merged real-time orders with historical_orders
+* **2. Stream Processing – Azure Event Hub**
+ Connected using Databricks Lakeflow Declarative Pipeline, Real-time order data streamed into -> Catalog
+ * workspace_databricksproject_catalog,
+ * Schema: 01_bronze
+ * Tables: Tables: orders.csv
+ * Then: Merged real-time orders with historical_orders
 
 ## 🥈 Silver Layer – Data Transformation
 Implemented using Databricks Declarative Pipeline
-**1. Purpose:**
+* **1. Purpose:**
   * Clean raw data
   * Standardize formats
   * Apply business rules
   * Merge streaming + batch data
   * Prepare structured analytical tables
-**2. Transformations include:**
+* **2. Transformations include:**
   * Data validation
   * Deduplication
   * Joins between customers, restaurants, and orders
@@ -125,49 +125,63 @@ Databricks-Project
 ## Dashboards
 Two interactive dashboards were created:
 * **1️⃣ Restaurant Performance Dashboard**
-  1. Filters: Date Range (Start Date – End Date)
-  2. KPIs & Metrics: Total Orders, Total Revenue, Active Customers, AOV (Average Order Value) Unique Customers, Daily Sales, Best Selling Items, Order Volume by Day of Week, Peak Hour Analysis (Heatmap
+  * 1. Filters: Date Range (Start Date – End Date)
+  * 2. KPIs & Metrics: Total Orders, Total Revenue, Active Customers, AOV (Average Order Value) Unique Customers, Daily Sales, Best Selling Items, Order Volume by Day of Week, Peak Hour Analysis (Heatmap
                      by Day/Hour) Revenue by Order Type, Revenue by Food Category
     👉 Helps business understand sales trends and operational performance.
 
 * **2️⃣ Customer Reviews Dashboard**
-  **1. Filter:** Restaurant Name
-  **2. KPIs & Insights:** Review Volume Over Time, Average Rating, City-wise Insights, Positive Review Count, Neutral Review Count, Negative Review Count, Sentiment Trend (Positive / Neutral / Negative
+  * **1. Filter:** Restaurant Name
+  * **2. KPIs & Insights:** Review Volume Over Time, Average Rating, City-wise Insights, Positive Review Count, Neutral Review Count, Negative Review Count, Sentiment Trend (Positive / Neutral / Negative
                           over time), Ratings Distribution
-  **3. Issue Categorization:** Delivery, Food Quality, Pricing, Portion Size, Recent Review Feedback
+  * **3. Issue Categorization:** Delivery, Food Quality, Pricing, Portion Size, Recent Review Feedback
     👉 Helps improve customer satisfaction and service quality.
 
 ## Governance with Unity Catalog
-**1. This project demonstrates:**
+* **1. This project demonstrates:**
   * Central Role-Based Access Control
   * Unified Data Governance
   * Data Lineage Tracking
   * Search & Discovery
   * Audit Logs via System Tables
   * Compliance Monitoring
-**2. Unity Catalog ensures:**
+* **2. Unity Catalog ensures:**
   * The right people see the right data
   * Security is consistent across systems
   * Full observability of data usage
 
 ## Technologies Used
-![GitHub](https://img.shields.io/badge/github-repo-blue?logo=github)
-![Azure Databricks](https://img.shields.io/badge/Azure-Databricks-orange?logo=databricks)
-![Unity Catalog](https://img.shields.io/badge/Unity-Catalog-green?logo=unity)
-![Azure SQL Database](https://img.shields.io/badge/Azure-SQL%20Database-0078D4?logo=azure-sql-database)
-![Azure Event Hub](https://img.shields.io/badge/Azure-Event%20Hub-0078D4?logo=azureeventhub)
-![Lakeflow Connect](https://img.shields.io/badge/Lakeflow-Connect-purple?logo=azuredevops)
-![Lakeflow Declarative Pipeline](https://img.shields.io/badge/Lakeflow-Declarative%20Pipeline-purple?logo=azuredevops)
-![SQL](https://img.shields.io/badge/SQL-336791?logo=postgresql)
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python)
+| Layer / Tool | Purpose |
+|--------------|---------|
+| **![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)** | Source code repository |
+| **![Azure Databricks](https://img.shields.io/badge/Azure%20Databricks-FF3621?logo=databricks&logoColor=white)** | Distributed data engineering & analytics |
+| **![Unity Catalog](https://img.shields.io/badge/Unity%20Catalog-0072C6?logo=microsoftazure&logoColor=white)** | Centralized governance for data & AI assets |
+| **![Azure SQL Database](https://img.shields.io/badge/Azure%20SQL%20Database-0072C6?logo=microsoftazure&logoColor=white)** | Relational database for structured data |
+| **![Azure Event Hub](https://img.shields.io/badge/Azure%20Event%20Hub-0072C6?logo=microsoftazure&logoColor=white)** | Real-time data ingestion & streaming |
+| **![Lakeflow Connect](https://img.shields.io/badge/Lakeflow%20Connect-5C2D91?logo=microsoftazure&logoColor=white)** | Data connectivity across cloud storage |
+| **![Lakeflow Declarative Pipeline](https://img.shields.io/badge/Lakeflow%20Declarative%20Pipeline-5C2D91?logo=microsoftazure&logoColor=white)** | Declarative orchestration of data workflows |
+| **![SQL](https://img.shields.io/badge/SQL-336791?logo=postgresql&logoColor=white)** | Querying & managing structured data |
+| **![PySpark](https://img.shields.io/badge/PySpark-E25A1C?logo=apachespark&logoColor=white)** | Processing & transformation |
 
+## Key Outcomes
+* Unified data governance
+* Secure access control
+* Real-time + batch data integration
+* Business-ready dashboards
+* Improved compliance monitoring
+* Better decision-making with trusted data
 
-Raw Data
-<img width="954" height="306" alt="image" src="https://github.com/user-attachments/assets/306a1ab7-abd4-4123-b2dc-6ff0eeaa72f9" />
+## Business Impact
+This solution enables:
+* Faster decision-making
+* Improved data security
+* Better customer insights
+* Operational efficiency
+* Centralized governance
 
 **## Video link for Azure Event Hub Live streaming:**
-**1. Source to Azure EventHub** --> https://drive.google.com/file/d/1jng299B_VZDpiaOL4sFEvP9tt6ykr5cQ/view?usp=sharing
-**2. Azure EventHub to Databricks** --> https://drive.google.com/file/d/10rTyHUEMaa0WrpStV46G7MlMfxa68rns/view?usp=sharing
+* **1️⃣ Source to Azure EventHub** --> https://drive.google.com/file/d/1jng299B_VZDpiaOL4sFEvP9tt6ykr5cQ/view?usp=sharing
+* **2️⃣ Azure EventHub to Databricks** --> https://drive.google.com/file/d/10rTyHUEMaa0WrpStV46G7MlMfxa68rns/view?usp=sharing
 
 ## Conclusion
 This project demonstrates how organizations can use: Azure Databricks, Unity Catalog, Lakehouse architecture to build a secure, scalable, and business-ready data platform.
@@ -177,4 +191,5 @@ It solves real-world enterprise challenges around:
 * Compliance,
 * Analytics
 
+![Static Badge](https://img.shields.io/badge/Happy-DataEngineering!-blue)
 
