@@ -3,8 +3,6 @@
 
 ## Architecture
 
-
-<img width="5371" height="2685" alt="image" src="https://github.com/user-attachments/assets/8fa2d491-4b0c-41a0-be19-e2c347845698" />
 <img width="5371" height="2685" alt="image" src="https://github.com/user-attachments/assets/8fa2d491-4b0c-41a0-be19-e2c347845698" />
 
 ## Repository Structure
@@ -57,5 +55,9 @@ Databricks-Project
 ├── 📄 Azure_Overallcharge_CostAnalysis.png
 └── 📄 README.md
 ```
+
+Raw Data
+<img width="954" height="306" alt="image" src="https://github.com/user-attachments/assets/306a1ab7-abd4-4123-b2dc-6ff0eeaa72f9" />
+
 https://drive.google.com/file/d/1jng299B_VZDpiaOL4sFEvP9tt6ykr5cQ/view?usp=sharing
 https://drive.google.com/file/d/10rTyHUEMaa0WrpStV46G7MlMfxa68rns/view?usp=sharing
