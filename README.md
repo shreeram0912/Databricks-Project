@@ -1,5 +1,71 @@
 # Databricks-Project
 
+## Project Overview
+- This project demonstrates how to build a governed, secure, and scalable data platform using Azure Databricks, Unity Catalog, Azure SQL Database, and Azure Event Hub.
+- The goal is to solve common enterprise data challenges like:
+  * Data scattered across multiple systems
+  * Inconsistent access control
+  * Difficulty discovering trusted data
+  * Compliance and auditing issues
+- This solution brings everything into one unified, governed data platform.
+
+## Business Problems
+* **1️⃣ Data Sprawl:** Data was stored in different systems and locations, There was no single, unified view of tables, models, or storage.
+* **2️⃣ Inconsistent Access Control:**
+    * Each system (cloud storage, database, workspace) had its own security model.
+    * Permissions were managed separately, causing: Security gaps, Users seeing inconsistent data, Risk of unauthorized access
+* **3️⃣ Data Discovery Challenges:** 
+    * Teams struggled to: Search datasets, Understand data lineage, Track data quality
+* **4️⃣ Compliance & Monitoring Challenges:** 
+    * There was no centralized way to: Track user activity, Monitor data access, Audit usage logs
+
+## Solution Architecture
+This project uses Unity Catalog to provide:
+* Centralized governance
+* Role-based access control
+* Data discovery (search, tags, lineage)
+* Compliance monitoring through system tables
+All data is organized into Bronze, Silver, and Gold layers.
+
+## 🥉 Bronze Layer – Data Ingestion
+    Two data sources were used:
+**1. Batch Processing – Azure SQL Database**
+Connected using Databricks Lakeflow Connect, Data loaded into Unity Catalog -> Catalog
+* workspace_databricksproject_catalog,
+* Schema: 01_bronze
+* Tables: Tables: customer_reviews, customers, historical_orders, menu_items, restaurants.csv
+
+**2. Stream Processing – Azure Event Hub**
+Connected using Databricks Lakeflow Declarative Pipeline, Real-time order data streamed into -> Catalog
+* workspace_databricksproject_catalog,
+* Schema: 01_bronze
+* Tables: Tables: orders.csv
+* Then: Merged real-time orders with historical_orders
+
+## 🥈 Silver Layer – Data Transformation
+Implemented using Databricks Declarative Pipeline
+**1. Purpose:**
+  * Clean raw data
+  * Standardize formats
+  * Apply business rules
+  * Merge streaming + batch data
+  * Prepare structured analytical tables
+**2. Transformations include:**
+  * Data validation
+  * Deduplication
+  * Joins between customers, restaurants, and orders
+  * Schema standardization
+  * This layer prepares data for business-level analytics.
+
+## 🥇 Gold Layer – Business-Level Aggregations
+Also built using Declarative Pipeline
+1. Purpose: Create analytics-ready datasets for dashboards.
+2. Includes:
+  * Revenue calculations
+  * Customer metrics
+  * Sales performance
+  * Aggregated KPIs
+  * Sentiment analysis from reviews, This layer powers executive dashboards.
 
 ## Architecture
 
@@ -56,8 +122,59 @@ Databricks-Project
 └── 📄 README.md
 ```
 
+## Dashboards
+Two interactive dashboards were created:
+* **1️⃣ Restaurant Performance Dashboard**
+  1. Filters: Date Range (Start Date – End Date)
+  2. KPIs & Metrics: Total Orders, Total Revenue, Active Customers, AOV (Average Order Value) Unique Customers, Daily Sales, Best Selling Items, Order Volume by Day of Week, Peak Hour Analysis (Heatmap
+                     by Day/Hour) Revenue by Order Type, Revenue by Food Category
+    👉 Helps business understand sales trends and operational performance.
+
+* **2️⃣ Customer Reviews Dashboard**
+  **1. Filter:** Restaurant Name
+  **2. KPIs & Insights:** Review Volume Over Time, Average Rating, City-wise Insights, Positive Review Count, Neutral Review Count, Negative Review Count, Sentiment Trend (Positive / Neutral / Negative
+                          over time), Ratings Distribution
+  **3. Issue Categorization:** Delivery, Food Quality, Pricing, Portion Size, Recent Review Feedback
+    👉 Helps improve customer satisfaction and service quality.
+
+## Governance with Unity Catalog
+**1. This project demonstrates:**
+  * Central Role-Based Access Control
+  * Unified Data Governance
+  * Data Lineage Tracking
+  * Search & Discovery
+  * Audit Logs via System Tables
+  * Compliance Monitoring
+**2. Unity Catalog ensures:**
+  * The right people see the right data
+  * Security is consistent across systems
+  * Full observability of data usage
+
+## Technologies Used
+![GitHub](https://img.shields.io/badge/github-repo-blue?logo=github)
+![Azure Databricks](https://img.shields.io/badge/Azure-Databricks-orange?logo=databricks)
+![Unity Catalog](https://img.shields.io/badge/Unity-Catalog-green?logo=unity)
+![Azure SQL Database](https://img.shields.io/badge/Azure-SQL%20Database-0078D4?logo=azure-sql-database)
+![Azure Event Hub](https://img.shields.io/badge/Azure-Event%20Hub-0078D4?logo=azureeventhub)
+![Lakeflow Connect](https://img.shields.io/badge/Lakeflow-Connect-purple?logo=azuredevops)
+![Lakeflow Declarative Pipeline](https://img.shields.io/badge/Lakeflow-Declarative%20Pipeline-purple?logo=azuredevops)
+![SQL](https://img.shields.io/badge/SQL-336791?logo=postgresql)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python)
+
+
 Raw Data
 <img width="954" height="306" alt="image" src="https://github.com/user-attachments/assets/306a1ab7-abd4-4123-b2dc-6ff0eeaa72f9" />
 
-https://drive.google.com/file/d/1jng299B_VZDpiaOL4sFEvP9tt6ykr5cQ/view?usp=sharing
-https://drive.google.com/file/d/10rTyHUEMaa0WrpStV46G7MlMfxa68rns/view?usp=sharing
+**## Video link for Azure Event Hub Live streaming:**
+**1. Source to Azure EventHub** --> https://drive.google.com/file/d/1jng299B_VZDpiaOL4sFEvP9tt6ykr5cQ/view?usp=sharing
+**2. Azure EventHub to Databricks** --> https://drive.google.com/file/d/10rTyHUEMaa0WrpStV46G7MlMfxa68rns/view?usp=sharing
+
+## Conclusion
+This project demonstrates how organizations can use: Azure Databricks, Unity Catalog, Lakehouse architecture to build a secure, scalable, and business-ready data platform.
+It solves real-world enterprise challenges around:
+* Data sprawl,
+* Security,
+* Compliance,
+* Analytics
+
+
