@@ -1,5 +1,12 @@
 # Databricks-Project
 
+
+## Architecture
+
+
+<img width="5371" height="2685" alt="image" src="https://github.com/user-attachments/assets/8fa2d491-4b0c-41a0-be19-e2c347845698" />
+<img width="5371" height="2685" alt="image" src="https://github.com/user-attachments/assets/8fa2d491-4b0c-41a0-be19-e2c347845698" />
+
 ## Repository Structure
 ```
 Databricks-Project
