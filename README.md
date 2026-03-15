@@ -179,7 +179,7 @@ This solution enables:
 * Operational efficiency
 * Centralized governance
 
-**## Video link for Azure Event Hub Live streaming:**
+## **Video link for Azure Event Hub Live streaming:**
 * **1️⃣ Source to Azure EventHub** --> https://drive.google.com/file/d/1jng299B_VZDpiaOL4sFEvP9tt6ykr5cQ/view?usp=sharing
 * **2️⃣ Azure EventHub to Databricks** --> https://drive.google.com/file/d/10rTyHUEMaa0WrpStV46G7MlMfxa68rns/view?usp=sharing
 
